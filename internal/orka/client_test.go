@@ -18,14 +18,14 @@ import (
 func TestDeploy(t *testing.T) {
 	defer gock.Off()
 
-	gock.New("http://10.221.188.100").
-		Post("resources/vm/deploy").
+	gock.New("http://10.221.188.20").
+		Post("api/v1/namespaces/orka-default/vms").
 		Reply(200).
 		Type("application/json").
 		File("testdata/deploy.json")
 
 	client := &Client{
-		Endpoint: "http://10.221.188.100",
+		Endpoint: "http://10.221.188.20",
 		Token:    "token",
 	}
 	got, err := client.Deploy(context.Background(), "test")
@@ -50,14 +50,14 @@ func TestDeploy(t *testing.T) {
 func TestDeployError(t *testing.T) {
 	defer gock.Off()
 
-	gock.New("http://10.221.188.100").
-		Post("resources/vm/deploy").
+	gock.New("http://10.221.188.20").
+		Post("api/v1/namespaces/orka-default/vms").
 		Reply(200).
 		Type("application/json").
 		File("testdata/deploy_error.json")
 
 	client := &Client{
-		Endpoint: "http://10.221.188.100",
+		Endpoint: "http://10.221.188.20",
 		Token:    "token",
 	}
 	_, err := client.Deploy(context.Background(), "test")
