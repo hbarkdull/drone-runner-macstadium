@@ -50,8 +50,8 @@ func (c *Client) Create(ctx context.Context, config *Config) (*Response, error) 
 
 // Deploy deploys a virtual machine.
 func (c *Client) Deploy(ctx context.Context, name string) (*DeployResponse, error) {
-	in := map[string]string{"orka_vm_name": name}
-	uri := fmt.Sprintf("%s/resources/vm/deploy", c.Endpoint)
+	in := map[string]string{"name": name}
+	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms", c.Endpoint)
 	out := new(DeployResponse)
 	err := c.do("POST", uri, &in, out)
 	if err != nil {
@@ -62,10 +62,9 @@ func (c *Client) Deploy(ctx context.Context, name string) (*DeployResponse, erro
 
 // Delete deletes a deployment and deployment configuration.
 func (c *Client) Delete(ctx context.Context, name string) (*Response, error) {
-	in := map[string]string{"orka_vm_name": name}
-	uri := fmt.Sprintf("%s/resources/vm/purge", c.Endpoint)
+	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms/%s", c.Endpoint,name)
 	out := new(Response)
-	err := c.do("DELETE", uri, &in, out)
+	err := c.do("DELETE", uri, nil, out)
 	if err != nil {
 		return nil, err
 	}
@@ -74,7 +73,7 @@ func (c *Client) Delete(ctx context.Context, name string) (*Response, error) {
 
 // Check checks the virtual machine status.
 func (c *Client) Check(ctx context.Context, name string) (*StatusResponse, error) {
-	uri := fmt.Sprintf("%s/resources/vm/status/%s", c.Endpoint, name)
+	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms/%s", c.Endpoint, name)
 	out := new(StatusResponse)
 	err := c.do("GET", uri, nil, out)
 	if err != nil {
@@ -83,7 +82,7 @@ func (c *Client) Check(ctx context.Context, name string) (*StatusResponse, error
 	return out, getErrors(out.Response)
 }
 
-// CheckToken checks the token status
+// CheckToken checks the token status (Is this needed anymore?)
 func (c *Client) CheckToken(ctx context.Context) (*TokenResponse, error) {
 	uri := fmt.Sprintf("%s/token", c.Endpoint)
 	out := new(TokenResponse)
