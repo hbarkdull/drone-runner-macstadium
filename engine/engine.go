@@ -232,10 +232,10 @@ func (e *Engine) Run(ctx context.Context, specv runtime.Spec, stepv runtime.Step
 }
 
 // Ping pings the underlying runtime to verify connectivity.
-func (e *Engine) Ping(ctx context.Context) error {
-	_, err := e.client.CheckToken(ctx)
-	return err
-}
+//func (e *Engine) Ping(ctx context.Context) error {
+//	_, err := e.client.CheckToken(ctx)
+//	return err
+//}
 
 //
 // helper functions
