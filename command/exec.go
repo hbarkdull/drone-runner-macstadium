@@ -291,11 +291,11 @@ func registerExec(app *kingpin.Application) {
 	//
 
 	cmd.Flag("cpu", "orka cpu count").
-		Default("12").
+		Default("4").
 		IntVar(&c.Settings.Compute)
 
 	cmd.Flag("endpoint", "orka endpoint").
-		Default("http://10.221.188.100").
+		Default("http://10.221.188.20").
 		Envar("DRONE_ORKA_ENDPOINT").
 		StringVar(&c.Endpoint)
 
