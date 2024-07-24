@@ -94,20 +94,20 @@ func (c *daemonCommand) run(*kingpin.ParseContext) error {
 		logrus.WithError(err).
 			Fatalln("cannot load the engine")
 	}
-	for {
-		err := engine.Ping(ctx)
-		if err == context.Canceled {
-			break
-		}
-		if err != nil {
-			logrus.WithError(err).
-				Errorln("cannot ping macstadium")
-			time.Sleep(time.Second)
-		} else {
-			logrus.Debugln("successfully pinged macstadium")
-			break
-		}
-	}
+	//for {
+	//	err := engine.Ping(ctx)
+	//	if err == context.Canceled {
+	//		break
+	//	}
+	//	if err != nil {
+	//		logrus.WithError(err).
+	//			Errorln("cannot ping macstadium")
+	//		time.Sleep(time.Second)
+	//	} else {
+	//		logrus.Debugln("successfully pinged macstadium")
+	//		break
+	//	}
+	//}
 
 	remote := remote.New(cli)
 	tracer := history.New(remote)
