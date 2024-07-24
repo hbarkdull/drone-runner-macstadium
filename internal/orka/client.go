@@ -84,7 +84,7 @@ func (c *Client) Check(ctx context.Context, name string) (*StatusResponse, error
 
 // CheckToken checks the token status (Is this needed anymore?)
 func (c *Client) CheckToken(ctx context.Context) (*TokenResponse, error) {
-	uri := fmt.Sprintf("%s/token", c.Endpoint)
+	uri := fmt.Sprintf("%s/api/v1/cluster-info", c.Endpoint)
 	out := new(TokenResponse)
 	err := c.do("GET", uri, nil, out)
 	if err != nil {
