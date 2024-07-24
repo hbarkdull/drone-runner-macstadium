@@ -9,7 +9,6 @@ type Config struct {
 	Name  string `json:"name"`
 	Image string `json:"image"`
 	CPU   int    `json:"cpu"`
-	VCPU  int    `json:"cpu"`
 }
 
 type (
@@ -36,7 +35,6 @@ type (
 		Name  string `json:"name"`
 		Image string `json:"image"`
 		CPU   int    `json:"cpu"`
-		VCPU  int    `json:"cpu"`
 	}
 
 	// DeployResponse provides the deployment API response.
@@ -44,12 +42,9 @@ type (
 		Response
 		RAM             string        `json:"memory"`
 		VCPU            string        `json:"cpu"`
-		HostCPU         string        `json:"cpu"`
 		IP              string        `json:"ip"`
 		SSHPort         string        `json:"ssh"`
 		ScreenSharePort string        `json:"screenshare"`
-		VMID            string        `json:"vm_id"`
-		PortWarnings    []interface{} `json:"portWarnings"`
 		VncPort         string        `json:"vnc"`
 	}
 
@@ -57,24 +52,19 @@ type (
 	StatusResponse struct {
 		Response
 		VirtualMachineResources []struct {
-			VirtualMachineName string `json:"virtual_machine_name"`
-			VMDeploymentStatus string `json:"vm_deployment_status"`
+			VirtualMachineName string `json:"name"`
+			VMDeploymentStatus string `json:"status"`
 			Status             []struct {
 				Owner                 string `json:"owner"`
 				VirtualMachineName    string `json:"name"`
-				VirtualMachineID      string `json:"virtual_machine_id"`
 				NodeLocation          string `json:"node"`
-				NodeStatus            string `json:"node_status"`
 				VirtualMachineIP      string `json:"ip"`
 				VncPort               string `json:"vnc"`
 				ScreenSharingPort     string `json:"screenshare"`
 				SSHPort               string `json:"ssh"`
 				CPU                   int    `json:"cpu"`
-				Vcpu                  int    `json:"cpu"`
 				RAM                   string `json:"memory"`
-				BaseImage             string `json:"image"`
 				Image                 string `json:"image"`
-				ConfigurationTemplate string `json:"configuration_template"`
 				VMStatus              string `json:"status"`
 				ReservedPorts         []struct {
 					HostPort  int    `json:"host_port"`
