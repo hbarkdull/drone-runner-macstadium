@@ -33,11 +33,9 @@ type Client struct {
 // Create creates a deployment.
 func (c *Client) Create(ctx context.Context, config *Config) (*Response, error) {
 	in := map[string]interface{}{
-		"orka_vm_name":    config.Name,
-		"orka_base_image": config.Image,
-		"orka_image":      config.Name,
-		"orka_cpu_core":   config.CPU,
-		"vcpu_count":      config.VCPU,
+		"name":    config.Name,
+		"image": config.Image,
+		"cpu":   config.CPU,
 	}
 	uri := fmt.Sprintf("%s/resources/vm/create", c.Endpoint)
 	out := new(Response)
