@@ -6,10 +6,10 @@ package orka
 
 // Config configures a virtual machine.
 type Config struct {
-	Name  string `json:"orka_vm_name"`
-	Image string `json:"orka_base_image"`
-	CPU   int    `json:"orka_cpu_core"`
-	VCPU  int    `json:"vcpu_count"`
+	Name  string `json:"name"`
+	Image string `json:"image"`
+	CPU   int    `json:"cpu"`
+	VCPU  int    `json:"cpu"`
 }
 
 type (
@@ -33,24 +33,24 @@ type (
 	// TODO(bradrydzewski) model the full json structure (above) and
 	// replace and remove the Config struct with this struct.
 	CreateRequest struct {
-		Name  string `json:"orka_vm_name"`
-		Image string `json:"orka_base_image"`
-		CPU   int    `json:"orka_cpu_core"`
-		VCPU  int    `json:"vcpu_count"`
+		Name  string `json:"name"`
+		Image string `json:"image"`
+		CPU   int    `json:"cpu"`
+		VCPU  int    `json:"cpu"`
 	}
 
 	// DeployResponse provides the deployment API response.
 	DeployResponse struct {
 		Response
-		RAM             string        `json:"ram"`
-		VCPU            string        `json:"vcpu"`
-		HostCPU         string        `json:"host_cpu"`
+		RAM             string        `json:"memory"`
+		VCPU            string        `json:"cpu"`
+		HostCPU         string        `json:"cpu"`
 		IP              string        `json:"ip"`
-		SSHPort         string        `json:"ssh_port"`
-		ScreenSharePort string        `json:"screen_share_port"`
+		SSHPort         string        `json:"ssh"`
+		ScreenSharePort string        `json:"screenshare"`
 		VMID            string        `json:"vm_id"`
-		PortWarnings    []interface{} `json:"port_warnings"`
-		VncPort         string        `json:"vnc_port"`
+		PortWarnings    []interface{} `json:"portWarnings"`
+		VncPort         string        `json:"vnc"`
 	}
 
 	// StatusResponse provides the status API response.
@@ -61,21 +61,21 @@ type (
 			VMDeploymentStatus string `json:"vm_deployment_status"`
 			Status             []struct {
 				Owner                 string `json:"owner"`
-				VirtualMachineName    string `json:"virtual_machine_name"`
+				VirtualMachineName    string `json:"name"`
 				VirtualMachineID      string `json:"virtual_machine_id"`
-				NodeLocation          string `json:"node_location"`
+				NodeLocation          string `json:"node"`
 				NodeStatus            string `json:"node_status"`
-				VirtualMachineIP      string `json:"virtual_machine_ip"`
-				VncPort               string `json:"vnc_port"`
-				ScreenSharingPort     string `json:"screen_sharing_port"`
-				SSHPort               string `json:"ssh_port"`
+				VirtualMachineIP      string `json:"ip"`
+				VncPort               string `json:"vnc"`
+				ScreenSharingPort     string `json:"screenshare"`
+				SSHPort               string `json:"ssh"`
 				CPU                   int    `json:"cpu"`
-				Vcpu                  int    `json:"vcpu"`
-				RAM                   string `json:"RAM"`
-				BaseImage             string `json:"base_image"`
+				Vcpu                  int    `json:"cpu"`
+				RAM                   string `json:"memory"`
+				BaseImage             string `json:"image"`
 				Image                 string `json:"image"`
 				ConfigurationTemplate string `json:"configuration_template"`
-				VMStatus              string `json:"vm_status"`
+				VMStatus              string `json:"status"`
 				ReservedPorts         []struct {
 					HostPort  int    `json:"host_port"`
 					GuestPort int    `json:"guest_port"`
