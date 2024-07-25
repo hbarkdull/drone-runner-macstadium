@@ -11,6 +11,7 @@ import (
 	"os"
 	"strings"
 	"time"
+	"strconv"
 
 	"github.com/drone-runners/drone-runner-macstadium/internal/orka"
 	"github.com/drone/runner-go/logger"
@@ -295,7 +296,7 @@ func (e *Engine) create(ctx context.Context, spec *Spec) (*ssh.Client, error) {
 	}
 
 	// snapshot the ip address and port.
-	spec.ip = deploy.IP + ":" + deploy.SSHPort
+	spec.ip = deploy.IP + ":" + strconv.Itoa(deploy.SSHPort)
 
 	logger.FromContext(ctx).
 		WithField("id", spec.Name).
