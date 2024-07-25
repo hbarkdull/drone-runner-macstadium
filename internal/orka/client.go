@@ -37,7 +37,7 @@ func (c *Client) Create(ctx context.Context, config *Config) (*Response, error) 
 		"image": config.Image,
 		"cpu":   config.CPU,
 	}
-	uri := fmt.Sprintf("%s/resources/vm/create", c.Endpoint)
+	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms", c.Endpoint)
 	out := new(Response)
 	err := c.do("POST", uri, &in, out)
 	if err != nil {
