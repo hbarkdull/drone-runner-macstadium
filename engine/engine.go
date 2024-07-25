@@ -285,7 +285,7 @@ func (e *Engine) create(ctx context.Context, spec *Spec) (*ssh.Client, error) {
 		WithField("id", spec.Name).
 		Debug("deploy the vm")
 
-	deploy, err := e.client.Deploy(ctx, spec.Name)
+	deploy, err := e.client.Deploy(ctx, context.Context, spec.Name)
 	if err != nil {
 		logger.FromContext(ctx).
 			WithError(err).
