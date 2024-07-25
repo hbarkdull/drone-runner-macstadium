@@ -37,7 +37,7 @@ func (c *Client) Create(ctx context.Context, config *Config) (*CreateResponse, e
 		"image": config.Image,
 		"cpu":   config.CPU,
 	}
-	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms", c.Endpoint)
+	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vmconfigs", c.Endpoint)
 	out := new(CreateResponse)
 	err := c.do("POST", uri, &in, out)
 	if err != nil {
@@ -48,7 +48,7 @@ func (c *Client) Create(ctx context.Context, config *Config) (*CreateResponse, e
 
 // Deploy deploys a virtual machine.
 func (c *Client) Deploy(ctx context.Context, name string) (*DeployResponse, error) {
-	in := map[string]string{"name": name}
+	in := map[string]string{"vmConfig": name}
 	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms", c.Endpoint)
 	out := new(DeployResponse)
 	err := c.do("POST", uri, &in, out)
