@@ -47,7 +47,6 @@ func (e *Engine) Setup(ctx context.Context, specv runtime.Spec) error {
 		Name:  spec.Name,
 		Image: spec.Settings.Image,
 		CPU:   spec.Settings.Compute,
-		VCPU:  spec.Settings.Compute,
 	})
 	if err != nil {
 		logger.FromContext(ctx).
