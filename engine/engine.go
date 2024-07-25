@@ -297,6 +297,7 @@ func (e *Engine) create(ctx context.Context, spec *Spec) (*ssh.Client, error) {
 
 	// snapshot the ip address and port.
 	spec.ip = deploy.IP + ":" + strconv.Itoa(deploy.SSHPort)
+	spec.name = deploy.VirtualMachineName
 
 	logger.FromContext(ctx).
 		WithField("id", spec.Name).
