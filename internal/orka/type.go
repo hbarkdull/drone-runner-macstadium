@@ -40,22 +40,20 @@ type (
 	CreateResponse struct {
 		Response
 		RAM             string        `json:"memory"`
-		VCPU            string        `json:"cpu"`
-		IP              string        `json:"ip"`
-		SSHPort         string        `json:"ssh"`
-		ScreenSharePort string        `json:"screenshare"`
-		VncPort         string        `json:"vnc"`
+		IP             	string        `json:"ip"`
+		SSHPort         int           `json:"ssh"`
+		ScreenSharePort int           `json:"screenshare"`
+		VncPort         int           `json:"vnc"`
 	}
 
 	// DeployResponse provides the deployment API response.
 	DeployResponse struct {
 		Response
 		RAM             string        `json:"memory"`
-		VCPU            string        `json:"cpu"`
-		IP              string        `json:"ip"`
-		SSHPort         string        `json:"ssh"`
-		ScreenSharePort string        `json:"screenshare"`
-		VncPort         string        `json:"vnc"`
+		IP             	string        `json:"ip"`
+		SSHPort         int           `json:"ssh"`
+		ScreenSharePort int           `json:"screenshare"`
+		VncPort         int           `json:"vnc"`
 	}
 
 	// StatusResponse provides the status API response.
