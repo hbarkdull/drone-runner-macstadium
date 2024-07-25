@@ -31,7 +31,7 @@ type Client struct {
 }
 
 // Create creates a deployment.
-func (c *Client) Create(ctx context.Context, config *Config) (*Response, error) {
+func (c *Client) Create(ctx context.Context, config *Config) (*CreateResponse, error) {
 	in := map[string]interface{}{
 		"name":    config.Name,
 		"image": config.Image,
