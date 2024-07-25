@@ -36,6 +36,16 @@ type (
 		Image string `json:"image"`
 		CPU   int    `json:"cpu"`
 	}
+	
+	CreateResponse struct {
+		Response
+		RAM             string        `json:"memory"`
+		VCPU            string        `json:"cpu"`
+		IP              string        `json:"ip"`
+		SSHPort         string        `json:"ssh"`
+		ScreenSharePort string        `json:"screenshare"`
+		VncPort         string        `json:"vnc"`
+	}
 
 	// DeployResponse provides the deployment API response.
 	DeployResponse struct {
