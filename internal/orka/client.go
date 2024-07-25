@@ -47,12 +47,8 @@ func (c *Client) Create(ctx context.Context, config *Config) (*Response, error) 
 }
 
 // Deploy deploys a virtual machine.
-func (c *Client) Deploy(ctx context.Context, config *Config) (*DeployResponse, error) {
-	in := map[string]interface{}{
-		"name":    config.Name,
-		"image": config.Image,
-		"cpu":   config.CPU,
-	}
+func (c *Client) Deploy(ctx context.Context, name string) (*DeployResponse, error) {
+	in := map[string]string{"name": name}
 	uri := fmt.Sprintf("%s/api/v1/namespaces/orka-default/vms", c.Endpoint)
 	out := new(DeployResponse)
 	err := c.do("POST", uri, &in, out)
