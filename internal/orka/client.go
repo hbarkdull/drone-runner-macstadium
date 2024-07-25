@@ -55,7 +55,6 @@ func (c *Client) Deploy(ctx context.Context, name string) (*DeployResponse, erro
 	if err != nil {
 		return nil, err
 	}
-	println(out.Response)
 	return out, getErrors(out.Response)
 }
 
