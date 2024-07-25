@@ -43,7 +43,7 @@ func (c *Client) Create(ctx context.Context, config *Config) (*Response, error) 
 	if err != nil {
 		return nil, err
 	}
-	return out, getErrors(*out)
+	return out, getErrors(out.Response)
 }
 
 // Deploy deploys a virtual machine.
