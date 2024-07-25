@@ -286,6 +286,7 @@ func (e *Engine) create(ctx context.Context, spec *Spec) (*ssh.Client, error) {
 		Debug("deploy the vm")
 
 	deploy, err := e.client.Deploy(ctx, spec.Name)
+	Debug(deploy)
 	if err != nil {
 		logger.FromContext(ctx).
 			WithError(err).
@@ -296,6 +297,8 @@ func (e *Engine) create(ctx context.Context, spec *Spec) (*ssh.Client, error) {
 
 	// snapshot the ip address and port.
 	spec.ip = deploy.IP + ":" + deploy.SSHPort
+	Debug(deploy.IP)
+	Debug(deploy.SSHPort)
 
 	logger.FromContext(ctx).
 		WithField("id", spec.Name).
