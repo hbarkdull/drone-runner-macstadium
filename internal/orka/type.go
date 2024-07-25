@@ -51,28 +51,18 @@ type (
 	// StatusResponse provides the status API response.
 	StatusResponse struct {
 		Response
-		VirtualMachineResources []struct {
-			VirtualMachineName string `json:"name"`
-			VMDeploymentStatus string `json:"status"`
-			Status             []struct {
-				Owner                 string `json:"owner"`
-				VirtualMachineName    string `json:"name"`
-				NodeLocation          string `json:"node"`
-				VirtualMachineIP      string `json:"ip"`
-				VncPort               string `json:"vnc"`
-				ScreenSharingPort     string `json:"screenshare"`
-				SSHPort               string `json:"ssh"`
-				CPU                   int    `json:"cpu"`
-				RAM                   string `json:"memory"`
-				Image                 string `json:"image"`
-				VMStatus              string `json:"status"`
-				ReservedPorts         []struct {
-					HostPort  int    `json:"host_port"`
-					GuestPort int    `json:"guest_port"`
-					Protocol  string `json:"protocol"`
-				} `json:"reserved_ports"`
-			} `json:"status"`
-		} `json:"virtual_machine_resources"`
+		VirtualMachineName string `json:"name"`
+		VMDeploymentStatus string `json:"status"`
+		Owner                 string `json:"owner"`
+		NodeLocation          string `json:"node"`
+		VirtualMachineIP      string `json:"ip"`
+		VncPort               string `json:"vnc"`
+		ScreenSharingPort     string `json:"screenshare"`
+		SSHPort               string `json:"ssh"`
+		CPU                   int    `json:"cpu"`
+		RAM                   string `json:"memory"`
+		Image                 string `json:"image"`
+		VMStatus              string `json:"status"`
 	}
 
 	// TokenResponse provides the token API response.
