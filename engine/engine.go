@@ -300,10 +300,8 @@ func (e *Engine) create(ctx context.Context, spec *Spec) (*ssh.Client, error) {
 	logger.FromContext(ctx).
 		WithField("id", spec.Name).
 		WithField("ip", spec.ip).
+		WithField("Deploy",deploy).
 		Debug("successfully deployed the vm")
-		Debug(deploy)
-		Debug(deploy.IP)
-		Debug(deploy.SSHPort)
 
 	logger.FromContext(ctx).
 		WithField("ip", spec.ip).
