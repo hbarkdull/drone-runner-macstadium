@@ -49,6 +49,7 @@ type (
 	// DeployResponse provides the deployment API response.
 	DeployResponse struct {
 		Response
+		VirtualMachineName string        `json:"name"`	
 		RAM             string        `json:"memory"`
 		IP             	string        `json:"ip"`
 		SSHPort         int           `json:"ssh"`
