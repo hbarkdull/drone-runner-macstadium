@@ -41,8 +41,7 @@ func (e *Engine) Setup(ctx context.Context, specv runtime.Spec) error {
 
 	logger.FromContext(ctx).
 		WithField("id", spec.Name).
-		Debug("create the vm config").
-		Debug(spec.Name)
+		Debug("create the vm config")
 
 	// create the vm configuration.
 	_, err := e.client.Create(ctx, &orka.Config{
