@@ -41,7 +41,7 @@ func (e *Engine) Setup(ctx context.Context, specv runtime.Spec) error {
 
 	logger.FromContext(ctx).
 		WithField("id", spec.Name).
-		Debug("create the vm config")
+		Debug("create the vm config").
 		Debug(spec.Name)
 
 	// create the vm configuration.
