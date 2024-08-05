@@ -26,7 +26,7 @@ import (
 
 // random generator function
 var random = func() string {
-	return "drone"
+	return "drone" + uniuri.NewLenChars(20, []byte("abcdefghijklmnopqrstuvwxyz0123456789"))
 }
 
 // Settings defines default settings.
